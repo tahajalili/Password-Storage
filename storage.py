@@ -13,7 +13,7 @@ SQL_CREATE_STATEMENT = '''CREATE TABLE password
              (id integer PRIMARY KEY NOT NULL,username text, password text, source text)'''
 SQL_INSERT_STATEMENT = '''INSERT INTO password (username, password, source)VALUES(?,?,?)'''
 
-DATABASE_PATH = '/home/taha/lessons/projects/passStorage/passDB.db'
+DATABASE_PATH = '/PATH-TO-YOUR-DB/passDB.db'
 
 
 def create_connection(db_file):
