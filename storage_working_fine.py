@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 __author__ = "Taha Jalili"
 __license__ = "GPL"
 __version__ = "1.0.0"
@@ -13,7 +14,7 @@ SQL_CREATE_STATEMENT = '''CREATE TABLE password
              (id integer PRIMARY KEY NOT NULL,username text, password text, source text)'''
 SQL_INSERT_STATEMENT = '''INSERT INTO password (username, password, source)VALUES(?,?,?)'''
 
-DATABASE_PATH = '/PATH-TO-YOUR-DB/passDB.db'
+DATABASE_PATH = '/home/taha/lessons/projects/passStorage/passDB.db'
 
 
 def create_connection(db_file):
@@ -52,13 +53,14 @@ def show_info(connection):
 		print(row,'')
 	print('\n')
 
-def ask_again():
-	user_choice = input("Wish to continue? Y/N ")
-	if user_choice == 'y' or user_choice == 'Y':
-		main()
-	elif user_choice == 'n' or user_choice == 'N':
-		print("==> BYE <==")
-		sys.exit(0)
+#error is here:
+# def ask_again():
+# 	user_choice = input("Wish to continue? Y/N ")
+# 	if user_choice == 'y' or user_choice == 'Y':
+# 		main()
+# 	elif user_choice == 'n' or user_choice == 'N':
+# 		print("==> BYE <==")
+# 		sys.exit(0)
 
 def main():
 	conn = create_connection(DATABASE_PATH)
@@ -74,12 +76,11 @@ def main():
 	answers = inquirer.prompt(questions)
 	
 	if answers['job'] == 'Add data':
-		user_info = get_input()
-		insert_date(conn, user_info)
+		insert_date(conn,get_input())
 	elif answers['job'] == 'Show saved data.':
 		show_info(conn)
 	
-	ask_again()	
+	# ask_again()	
 	conn.commit()
 	conn.close()
 
