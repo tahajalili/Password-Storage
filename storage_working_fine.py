@@ -14,7 +14,7 @@ SQL_CREATE_STATEMENT = '''CREATE TABLE password
              (id integer PRIMARY KEY NOT NULL,username text, password text, source text)'''
 SQL_INSERT_STATEMENT = '''INSERT INTO password (username, password, source)VALUES(?,?,?)'''
 
-DATABASE_PATH = '/home/taha/lessons/projects/passStorage/passDB.db'
+DATABASE_PATH = '/PATH_TO_DB/passDB.db'
 
 
 def create_connection(db_file):
@@ -53,14 +53,6 @@ def show_info(connection):
 		print(row,'')
 	print('\n')
 
-#error is here:
-# def ask_again():
-# 	user_choice = input("Wish to continue? Y/N ")
-# 	if user_choice == 'y' or user_choice == 'Y':
-# 		main()
-# 	elif user_choice == 'n' or user_choice == 'N':
-# 		print("==> BYE <==")
-# 		sys.exit(0)
 
 def main():
 	conn = create_connection(DATABASE_PATH)
@@ -80,7 +72,7 @@ def main():
 	elif answers['job'] == 'Show saved data.':
 		show_info(conn)
 	
-	# ask_again()	
+	
 	conn.commit()
 	conn.close()
 
